@@ -1,0 +1,18 @@
+{% extends "layout/loggedout.html" %}
+
+{% block content %}
+
+<h1>{{ post.title }}</h1>
+
+<small>Posted by {{ post.author.email }} on {{ post.created_at.strftime('%d %b %Y') }}</small>
+
+<p>{{ post.description }}</p>
+
+{% if user.id == post.author.id %}
+<p>
+    <a href="/post/{{post.id}}/edit">Edit</a>
+    <a href="/post/{{post.id}}/delete">Delete</a>
+</p>
+{% endif %}
+
+{% endblock content %}
